@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package student;
+
+option go_package = "student_grpc/proto;student";
+
+service StudentService {
+  rpc AddStudent (Student) returns (Response);
+  rpc UpdateStudent (Student) returns (Response);
+  rpc DeleteStudent (StudentID) returns (Response);
+  rpc GetStudent (StudentID) returns (Student);
+}
+
+message Student {
+  string id = 1;
+  string name = 2;
+  int32 age = 3;
+  string class = 4;
+}
+
+message StudentID {
+  string id = 1;
+}
+
+message Response {
+  string message = 1;
+  bool success = 2;
+}
